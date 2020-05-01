@@ -3,6 +3,13 @@
   "version": "0.0.1",
   "description": "Convention routing for react.",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NicoKam/routes-watcher"
+  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "compile": "k-tools compile",
     "prepublish": "npm run compile",
