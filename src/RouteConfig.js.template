@@ -1,0 +1,8 @@
+import React from "react";
+import { history, asyncComponent, RouterWithChildren } from "react-convention-router";
+
+const routeConfig = @routeConfig;
+
+export default () => (
+  <RouterWithChildren history={history} routes={routeConfig} />
+)

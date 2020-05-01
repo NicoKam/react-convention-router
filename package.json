@@ -1,0 +1,30 @@
+{
+  "name": "react-convention-router",
+  "version": "0.0.1",
+  "description": "Convention routing for react.",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "k-tools compile",
+    "prepublish": "npm run compile",
+    "pub": "npm publish --registry=https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "convention",
+    "router"
+  ],
+  "author": "Kam",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "k-tools": "^0.1.2"
+  },
+  "dependencies": {
+    "routes-watcher": "0.0.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-router": ">=4.0.0",
+    "react-router-dom": ">=4.0.0"
+  }
+}
