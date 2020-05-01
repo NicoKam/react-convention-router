@@ -8,7 +8,9 @@
     "url": "https://github.com/NicoKam/routes-watcher"
   },
   "files": [
-    "lib"
+    "lib",
+    "tools.js",
+    "RouteConfig.js.template"
   ],
   "scripts": {
     "compile": "k-tools compile",
@@ -27,7 +29,7 @@
     "k-tools": "^0.1.2"
   },
   "dependencies": {
-    "routes-watcher": "0.0.6"
+    "routes-watcher": "0.0.7"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

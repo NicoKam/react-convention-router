@@ -1,5 +1,5 @@
 import React from "react";
-import { history, asyncComponent, RouterWithChildren } from "react-convention-router";
+import { history, asyncComponent, RouterWithChildren } from "react-convention-router/tools";
 
 const routeConfig = @routeConfig;
 

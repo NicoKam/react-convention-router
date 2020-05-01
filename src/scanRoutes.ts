@@ -1,14 +1,33 @@
-import { resolve, join } from "path";
+import { resolve, join, dirname } from "path";
+import fs from "fs";
 import scanRoutes from "routes-watcher";
 import { IConfig, RouteConfig } from "routes-watcher/lib";
 
 const DEV_MODE = process.env.NODE_ENV === "development";
 const ifDev = (t: any, f: any): any => (DEV_MODE ? t : f);
 const pageRoot = join(process.cwd(), "src/pages");
-const outputPath = join(process.cwd(), "src/pages/.entry/index.js");
+const defaultOutputPath: string = join(process.cwd(), "src/pages/.entry/index.js");
 const globIgnore = ["**/components/**", "**/layouts/**", "**/models/**", "**/services/**"];
 
-export default function (config: IConfig) {
+export interface Config extends IConfig {
+  /** output path */
+  outputPath?: string,
+}
+
+export default function (config: Config) {
+  let outputPath: string = dirname(defaultOutputPath);
+  if (config) {
+    if (typeof config.output === "string") {
+      outputPath = dirname(config.output);
+    } else if (config.outputPath) {
+      outputPath = config.outputPath;
+    }
+  }
+  try {
+    fs.accessSync(outputPath);
+  } catch (err) {
+    fs.mkdirSync(outputPath, { recursive: true });
+  }
   scanRoutes({
     pageRoot,
     ignore: globIgnore,
@@ -22,8 +41,8 @@ export default function (config: IConfig) {
       }
       return true;
     },
-    templateFile: resolve(__dirname, "RouteConfig.js.template"),
-    output: outputPath,
+    templateFile: resolve(__dirname, "../RouteConfig.js.template"),
+    output: defaultOutputPath,
     watch: DEV_MODE,
     formatter: ({ files = {}, fullPath, path }, { toScript, pushChild, relativePageRoot }) => {
       const res: RouteConfig = {
@@ -34,16 +53,16 @@ export default function (config: IConfig) {
         toScript(`asyncComponent(() => import(${importPath}))`),
       );
 
-      if (files["index.js"]) {
-        const indexPath = JSON.stringify(join(relativePageRoot(__dirname), files["index.js"]));
+      if (files["index"]) {
+        const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files["index"]));
         res.component = importFunc(indexPath);
         res.exact = true;
-        if (files["_layout.js"]) {
+        if (files["_layout"]) {
           pushChild({ ...res });
         }
       }
-      if (files["_layout.js"]) {
-        const layoutPath = JSON.stringify(join(relativePageRoot(__dirname), files["_layout.js"]));
+      if (files["_layout"]) {
+        const layoutPath = JSON.stringify(join(relativePageRoot(outputPath), files["_layout"]));
         res.component = importFunc(layoutPath);
         res.exact = false;
       }
