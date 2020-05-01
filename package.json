@@ -1,6 +1,6 @@
 {
   "name": "react-convention-router",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Convention routing for react.",
   "main": "lib/index.js",
   "repository": {
