@@ -1,11 +1,10 @@
 import React from "react";
-import { Route } from "react-router";
-import { Router } from "react-router-dom";
+import { Route, Router } from "react-router";
 
-const RevRotues = ({ routes = [] }) => {
+const RevRoutes = ({ routes = [] }) => {
   return routes.map(({ children, path, component = null, exact, indexRoute, ...props }) => {
     const Page = component;
-    const childrenComp = <RouterWithChildren routes={children} />;
+    const childrenComp = <RevRoutes routes={children} />;
     return (
       <Route
         key={path}
@@ -33,7 +32,7 @@ const RevRotues = ({ routes = [] }) => {
 const RouterWithChildren = ({ routes = [], ...props }) => {
   return (
     <Router {...props}>
-      <RevRotues rotues={routes} />
+      <RevRoutes routes={routes} />
     </Router>
   );
 };
