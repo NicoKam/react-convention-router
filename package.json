@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NicoKam/routes-watcher"
+    "url": "https://github.com/NicoKam/react-convention-router"
   },
   "files": [
     "lib",
@@ -15,7 +15,7 @@
   "scripts": {
     "compile": "k-tools compile",
     "prepublish": "npm run compile",
-    "pub": "npm publish --registry=https://registry.npmjs.org/"
+    "pub": "npm publish --registry=https://registry.npmjs.org/ && git push"
   },
   "keywords": [
     "react",
@@ -29,7 +29,7 @@
     "k-tools": "^0.1.2"
   },
   "dependencies": {
-    "routes-watcher": "0.0.7"
+    "routes-watcher": "0.0.9"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

@@ -14,6 +14,18 @@ export interface Config extends IConfig {
   outputPath?: string;
 }
 
+function flatten<T>(arr: T[]) {
+  const res: T[] = [];
+  arr.forEach((T) => {
+    if (Array.isArray(T)) {
+      res.push(...T);
+    } else {
+      res.push(T);
+    }
+  });
+  return res;
+}
+
 export default function (config: Config) {
   let outputPath: string = dirname(defaultOutputPath);
   if (config) {
@@ -44,7 +56,7 @@ export default function (config: Config) {
     templateFile: resolve(__dirname, '../RouteConfig.js.template'),
     output: defaultOutputPath,
     watch: DEV_MODE,
-    formatter: ({ files = {}, fullPath, path }, { toScript, pushChild, relativePageRoot }) => {
+    formatter: ({ files = {}, fullPath, path, children = [] }, { toScript, pushChild, relativePageRoot }) => {
       const res: RouteConfig = {
         path: fullPath ?? path,
       };
@@ -53,10 +65,13 @@ export default function (config: Config) {
 
       if (files['index']) {
         const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files['index']));
-        res.component = importFunc(indexPath);
+        const component = importFunc(indexPath);
         res.exact = true;
-        if (files['_layout']) {
-          pushChild({ ...res });
+        if (files['_layout'] || children.length > 0) {
+          pushChild({ ...res, component, exact: true });
+        } else {
+          res.component = component;
+          res.exact = true;
         }
       }
       if (files['_layout']) {
@@ -67,5 +82,9 @@ export default function (config: Config) {
       return res;
     },
     ...config,
+    modifyRoutes: (routes) => {
+      const newRoutes = flatten(routes);
+      return typeof config.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : routes;
+    },
   });
 }
