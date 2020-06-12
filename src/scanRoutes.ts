@@ -84,7 +84,7 @@ export default function (config: Config) {
     ...config,
     modifyRoutes: (routes) => {
       const newRoutes = flatten(routes);
-      return typeof config.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : routes;
+      return typeof config?.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : routes;
     },
   });
 }
