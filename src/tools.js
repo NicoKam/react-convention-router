@@ -1,9 +1,5 @@
-import RouterWithChildren from "./RouterWithChildren";
-import asyncComponent from "./asyncComponent";
-import history from "./history";
+import RouterWithChildren from './RouterWithChildren';
+import asyncComponent from './asyncComponent';
+import history from './history';
 
-export {
-  history,
-  asyncComponent,
-  RouterWithChildren,
-};
+export { history, asyncComponent, RouterWithChildren };

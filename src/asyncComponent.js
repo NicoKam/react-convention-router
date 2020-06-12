@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function (getComponent) {
   return class AsyncComponent extends React.Component {

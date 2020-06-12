@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Router } from "react-router";
+import React from 'react';
+import { Route, Router } from 'react-router';
 
 const RevRoutes = ({ routes = [] }) => {
   return routes.map(({ children, path, component = null, exact, indexRoute, ...props }) => {
@@ -12,13 +12,7 @@ const RevRoutes = ({ routes = [] }) => {
         exact={exact}
         render={(childProps) => {
           if (component) {
-            return (
-              <Page {...childProps}>
-                {
-                  childrenComp
-                }
-              </Page>
-            );
+            return <Page {...childProps}>{childrenComp}</Page>;
           } else {
             return childrenComp;
           }
@@ -36,6 +30,5 @@ const RouterWithChildren = ({ routes = [], ...props }) => {
     </Router>
   );
 };
-
 
 export default RouterWithChildren;
