@@ -14,7 +14,7 @@ export interface Config extends IConfig {
   outputPath?: string;
 }
 
-function flatten<T>(arr: T[]) {
+function flatten<T>(arr: (T | T[])[]) {
   const res: T[] = [];
   arr.forEach((T) => {
     if (Array.isArray(T)) {
@@ -25,6 +25,19 @@ function flatten<T>(arr: T[]) {
   });
   return res;
 }
+
+const replaceDynamicRoutePath = (path: string) => {
+  return path.replace(/\[([^/^\[^\]]+)\]/g, (match0, match1, index, str) => {
+    if (
+      index > 0 &&
+      str[index - 1] === '/' &&
+      (index + match0.length >= str.length || str[index + match0.length] === '/')
+    ) {
+      return `:${match1}`;
+    }
+    return match0;
+  });
+};
 
 export default function (config: Config) {
   let outputPath: string = dirname(defaultOutputPath);
@@ -43,7 +56,7 @@ export default function (config: Config) {
   scanRoutes({
     pageRoot,
     ignore: globIgnore,
-    files: ['index.js', 'index.ts', '_layout.js', '_layout.ts', '_layout.jsx', '_layout.tsx'],
+    files: ['index.js', 'index.ts', 'index.tsx', '_layout.js', '_layout.ts', '_layout.jsx', '_layout.tsx'],
     filter: (routePath) => {
       if (/[A-Z]/.test(routePath)) {
         return false;
@@ -58,7 +71,7 @@ export default function (config: Config) {
     watch: DEV_MODE,
     formatter: ({ files = {}, fullPath, path, children = [] }, { toScript, pushChild, relativePageRoot }) => {
       const res: RouteConfig = {
-        path: fullPath ?? path,
+        path: replaceDynamicRoutePath(fullPath || path),
       };
       const importFunc = (importPath: string) =>
         ifDev(toScript(`require(${importPath}).default`), toScript(`asyncComponent(() => import(${importPath}))`));
@@ -84,7 +97,7 @@ export default function (config: Config) {
     ...config,
     modifyRoutes: (routes) => {
       const newRoutes = flatten(routes);
-      return typeof config?.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : routes;
+      return typeof config?.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : newRoutes;
     },
   });
 }

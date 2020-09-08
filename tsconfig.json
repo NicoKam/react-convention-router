@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "outDir": "dist",
     "module": "esnext",
     "target": "esnext",
     "lib": [
@@ -21,6 +21,9 @@
     "experimentalDecorators": true,
     "strict": true
   },
+  "include": [
+    "./src"
+  ],
   "exclude": [
     "node_modules",
     "build",
