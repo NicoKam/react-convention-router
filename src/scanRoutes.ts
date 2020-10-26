@@ -12,6 +12,7 @@ const globIgnore = ['**/components/**', '**/layouts/**', '**/models/**', '**/ser
 export interface Config extends IConfig {
   /** output path */
   outputPath?: string;
+  importCode?: (importPath: string) => string;
 }
 
 function flatten<T>(arr: (T | T[])[]) {
@@ -39,7 +40,7 @@ const replaceDynamicRoutePath = (path: string) => {
   });
 };
 
-export default function (config: Config) {
+export default function ({ importCode, ...config }: Config) {
   let outputPath: string = dirname(defaultOutputPath);
   if (config) {
     if (typeof config.output === 'string') {
@@ -74,7 +75,9 @@ export default function (config: Config) {
         path: replaceDynamicRoutePath(fullPath || path),
       };
       const importFunc = (importPath: string) =>
-        ifDev(toScript(`require(${importPath}).default`), toScript(`asyncComponent(() => import(${importPath}))`));
+        typeof importCode === 'function'
+          ? toScript(importCode(importPath))
+          : ifDev(toScript(`require(${importPath}).default`), toScript(`asyncComponent(() => import(${importPath}))`));
 
       if (files['index']) {
         const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files['index']));
