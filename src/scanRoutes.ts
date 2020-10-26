@@ -77,10 +77,10 @@ export default function ({ importCode, ...config }: Config) {
       const importFunc = (importPath: string) =>
         typeof importCode === 'function'
           ? toScript(importCode(importPath))
-          : ifDev(toScript(`require(${importPath}).default`), toScript(`asyncComponent(() => import(${importPath}))`));
+          : ifDev(toScript(`require('${importPath}').default`), toScript(`asyncComponent(() => import('${importPath}'))`));
 
       if (files['index']) {
-        const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files['index']));
+        const indexPath = join(relativePageRoot(outputPath), files['index']);
         const component = importFunc(indexPath);
         res.exact = true;
         if (files['_layout'] || children.length > 0) {
@@ -91,7 +91,7 @@ export default function ({ importCode, ...config }: Config) {
         }
       }
       if (files['_layout']) {
-        const layoutPath = JSON.stringify(join(relativePageRoot(outputPath), files['_layout']));
+        const layoutPath = join(relativePageRoot(outputPath), files['_layout']);
         res.component = importFunc(layoutPath);
         res.exact = false;
       }
