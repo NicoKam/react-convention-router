@@ -1,33 +1,36 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "module": "esnext",
-    "target": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "sourceMap": true,
-    "baseUrl": ".",
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
     "allowJs": true,
-    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "strict": true
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "ESNext",
+    "types": [
+      "node",
+      "jest"
+    ]
   },
   "include": [
-    "./src"
+    "src/**/*"
   ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "scripts"
-  ]
+  "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest"]
 }

@@ -15,16 +15,24 @@ export interface Config extends IConfig {
   importCode?: (importPath: string) => string;
 }
 
-function flatten<T>(arr: (T | T[])[]) {
-  const res: T[] = [];
-  arr.forEach((T) => {
-    if (Array.isArray(T)) {
-      res.push(...T);
-    } else {
-      res.push(T);
-    }
-  });
-  return res;
+function sort404(arr: RouteConfig[]) {
+  return arr
+    .map((item) => {
+      if (Array.isArray(item.children)) {
+        return {
+          ...item,
+          children: sort404(item.children),
+        };
+      }
+      return item;
+    })
+    .sort((a, b) => {
+      // @ts-ignore
+      const va = a.flag === '404' ? 1 : 0;
+      // @ts-ignore
+      const vb = b.flag === '404' ? 1 : 0;
+      return va - vb;
+    });
 }
 
 const replaceDynamicRoutePath = (path: string) => {
@@ -57,7 +65,18 @@ export default function ({ importCode, ...config }: Config) {
   scanRoutes({
     pageRoot,
     ignore: globIgnore,
-    files: ['index.js', 'index.ts', 'index.tsx', '_layout.js', '_layout.ts', '_layout.jsx', '_layout.tsx'],
+    files: [
+      'index.js',
+      'index.ts',
+      'index.tsx',
+      '_layout.js',
+      '_layout.ts',
+      '_layout.jsx',
+      '_layout.tsx',
+      '404.js',
+      '404.jsx',
+      '404.tsx',
+    ],
     filter: (routePath) => {
       if (/[A-Z]/.test(routePath)) {
         return false;
@@ -82,9 +101,9 @@ export default function ({ importCode, ...config }: Config) {
       if (files['index']) {
         const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files['index']));
         const component = importFunc(indexPath);
-        res.exact = true;
         if (files['_layout'] || children.length > 0) {
           pushChild({ ...res, component, exact: true });
+          res.exact = false;
         } else {
           res.component = component;
           res.exact = true;
@@ -95,11 +114,21 @@ export default function ({ importCode, ...config }: Config) {
         res.component = importFunc(layoutPath);
         res.exact = false;
       }
+      if (files['404'] && path === '/') {
+        const layoutPath = JSON.stringify(join(relativePageRoot(outputPath), files['404']));
+        pushChild({
+          ...res,
+          component: importFunc(layoutPath),
+          exact: false,
+          // @ts-ignore
+          flag: '404',
+        });
+      }
       return res;
     },
     ...config,
     modifyRoutes: (routes) => {
-      const newRoutes = flatten(routes);
+      const newRoutes = sort404(routes);
       return typeof config?.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : newRoutes;
     },
   });

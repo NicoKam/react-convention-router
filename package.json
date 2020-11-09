@@ -30,7 +30,7 @@
     "k-tools": "^0.1.2"
   },
   "dependencies": {
-    "routes-watcher": "0.1.0"
+    "routes-watcher": "^0.2.2"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
