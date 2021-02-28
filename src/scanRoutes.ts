@@ -108,7 +108,7 @@ export default function ({ importCode, ...config }: Config) {
         const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files['index']));
         const component = importFunc(indexPath);
         if (files['_layout'] || children.length > 0) {
-          // 若同时存在 _layout 或 自身为叶子节点
+          // 若同时存在 _layout 或 包含更多叶子节点
           // 则将本节点的信息加入到下一层级，并标记本节点非绝对节点
           pushChild({ ...res, component, exact: true });
           res.exact = false;
