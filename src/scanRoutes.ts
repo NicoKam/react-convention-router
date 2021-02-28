@@ -35,6 +35,10 @@ function sort404(arr: RouteConfig[]) {
     });
 }
 
+/**
+ * 替换动态路由
+ * @param path 路径
+ */
 const replaceDynamicRoutePath = (path: string) => {
   return path.replace(/\[([^/^\[^\]]+)\]/g, (match0, match1, index, str) => {
     if (
@@ -99,22 +103,29 @@ export default function ({ importCode, ...config }: Config) {
           : ifDev(toScript(`require(${importPath}).default`), toScript(`asyncComponent(() => import(${importPath}))`));
 
       if (files['index']) {
+        // 存在 index 文件
+
         const indexPath = JSON.stringify(join(relativePageRoot(outputPath), files['index']));
         const component = importFunc(indexPath);
         if (files['_layout'] || children.length > 0) {
+          // 若同时存在 _layout 或 自身为叶子节点
+          // 则将本节点的信息加入到下一层级，并标记本节点非绝对节点
           pushChild({ ...res, component, exact: true });
           res.exact = false;
         } else {
+          // 否则为本节点标记 component
           res.component = component;
           res.exact = true;
         }
       }
       if (files['_layout']) {
+        // 若当前节点存在 _layout 则将本节点 component 标记为 _layout
         const layoutPath = JSON.stringify(join(relativePageRoot(outputPath), files['_layout']));
         res.component = importFunc(layoutPath);
         res.exact = false;
       }
       if (files['404'] && path === '/') {
+        // 404 路由逻辑
         const layoutPath = JSON.stringify(join(relativePageRoot(outputPath), files['404']));
         pushChild({
           ...res,
