@@ -30,7 +30,8 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "test"
   ],
   "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest"]
 }

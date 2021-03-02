@@ -16,7 +16,9 @@
     "compile": "k-tools compile",
     "prepublish": "npm run compile",
     "pubp": "npm version patch && npm run pub",
-    "pub": "npm publish --registry=https://registry.npmjs.org/ && git push"
+    "pub": "npm publish --registry=https://registry.npmjs.org/ && git push",
+    "test": "jest",
+    "test-c": "jest --coverage"
   },
   "keywords": [
     "react",
@@ -26,11 +28,15 @@
   "author": "Kam",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "@types/node": "^13.13.4",
-    "k-tools": "^0.1.2"
+    "jest": "^26.6.3",
+    "k-tools": "^0.1.2",
+    "ts-jest": "^26.5.2"
   },
   "dependencies": {
-    "routes-watcher": "^0.2.2"
+    "routes-watcher": "^0.2.2",
+    "slash": "^3.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

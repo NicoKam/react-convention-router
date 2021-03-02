@@ -1,6 +1,7 @@
 import { resolve, join, dirname } from 'path';
 import fs from 'fs';
 import scanRoutes from 'routes-watcher';
+import slash from 'slash';
 import { IConfig, RouteConfig } from 'routes-watcher/lib';
 
 const DEV_MODE = process.env.NODE_ENV === 'development';
@@ -100,7 +101,7 @@ export default function ({ importCode, ...config }: Config) {
       const importFunc = (importPath: string) =>
         typeof importCode === 'function'
           ? toScript(importCode(importPath))
-          : ifDev(toScript(`require(${importPath}).default`), toScript(`asyncComponent(() => import(${importPath}))`));
+          : ifDev(toScript(`require(${slash(importPath)}).default`), toScript(`asyncComponent(() => import(${slash(importPath)}))`));
 
       if (files['index']) {
         // 存在 index 文件
