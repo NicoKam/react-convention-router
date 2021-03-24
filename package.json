@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "compile": "k-tools compile",
-    "prepublish": "npm run compile",
+    "prepublishOnly": "npm run compile",
     "pubp": "npm version patch && npm run pub",
     "pub": "npm publish --registry=https://registry.npmjs.org/ && git push",
     "test": "jest",
