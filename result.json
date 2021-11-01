@@ -1,0 +1,735 @@
+[
+  {
+    "path": "/",
+    "exact": false,
+    "component": "@/pages/_layout.js",
+    "children": [
+      {
+        "path": "/",
+        "exact": true,
+        "component": "@/pages/index.js"
+      },
+      {
+        "path": "/articles",
+        "exact": false,
+        "component": "@/pages/articles/_layout.js",
+        "children": [
+          {
+            "path": "/articles/create-template",
+            "exact": true,
+            "component": "@/pages/articles/create-template/index.js"
+          }
+        ]
+      },
+      {
+        "path": "/cbd",
+        "exact": false,
+        "component": "@/pages/cbd/_layout.js",
+        "children": [
+          {
+            "path": "/cbd",
+            "exact": true,
+            "component": "@/pages/cbd/index.js"
+          },
+          {
+            "path": "/cbd/address-list",
+            "exact": true,
+            "component": "@/pages/cbd/address-list/index.js"
+          },
+          {
+            "path": "/cbd/alert-explain",
+            "exact": true,
+            "component": "@/pages/cbd/alert-explain/index.js"
+          },
+          {
+            "path": "/cbd/antd3-form",
+            "exact": true,
+            "component": "@/pages/cbd/antd3-form/index.js"
+          },
+          {
+            "path": "/cbd/auto-search-input",
+            "exact": true,
+            "component": "@/pages/cbd/auto-search-input/index.js"
+          },
+          {
+            "path": "/cbd/background",
+            "exact": true,
+            "component": "@/pages/cbd/background/index.js"
+          },
+          {
+            "path": "/cbd/badge-tip",
+            "exact": true,
+            "component": "@/pages/cbd/badge-tip/index.js"
+          },
+          {
+            "path": "/cbd/banner",
+            "exact": true,
+            "component": "@/pages/cbd/banner/index.js"
+          },
+          {
+            "path": "/cbd/barcode",
+            "exact": true,
+            "component": "@/pages/cbd/barcode/index.js"
+          },
+          {
+            "path": "/cbd/car-plate-picker",
+            "exact": true,
+            "component": "@/pages/cbd/car-plate-picker/index.js"
+          },
+          {
+            "path": "/cbd/card",
+            "exact": true,
+            "component": "@/pages/cbd/card/index.js"
+          },
+          {
+            "path": "/cbd/catalogue",
+            "exact": true,
+            "component": "@/pages/cbd/catalogue/index.js"
+          },
+          {
+            "path": "/cbd/cbd-card",
+            "exact": true,
+            "component": "@/pages/cbd/cbd-card/index.js"
+          },
+          {
+            "path": "/cbd/cbd-qrcode",
+            "exact": true,
+            "component": "@/pages/cbd/cbd-qrcode/index.js"
+          },
+          {
+            "path": "/cbd/cbd-table",
+            "exact": true,
+            "component": "@/pages/cbd/cbd-table/index.js"
+          },
+          {
+            "path": "/cbd/class-prefix",
+            "exact": true,
+            "component": "@/pages/cbd/class-prefix/index.js"
+          },
+          {
+            "path": "/cbd/context-menu",
+            "exact": true,
+            "component": "@/pages/cbd/context-menu/index.js"
+          },
+          {
+            "path": "/cbd/controlled-props-hooks",
+            "exact": true,
+            "component": "@/pages/cbd/controlled-props-hooks/index.js"
+          },
+          {
+            "path": "/cbd/controlled-props",
+            "exact": true,
+            "component": "@/pages/cbd/controlled-props/index.js"
+          },
+          {
+            "path": "/cbd/copy-btn",
+            "exact": true,
+            "component": "@/pages/cbd/copy-btn/index.js"
+          },
+          {
+            "path": "/cbd/date-picker",
+            "exact": true,
+            "component": "@/pages/cbd/date-picker/index.js"
+          },
+          {
+            "path": "/cbd/drag-zoom-sensor",
+            "exact": true,
+            "component": "@/pages/cbd/drag-zoom-sensor/index.js"
+          },
+          {
+            "path": "/cbd/editable-input",
+            "exact": true,
+            "component": "@/pages/cbd/editable-input/index.js"
+          },
+          {
+            "path": "/cbd/eq-ratio-box",
+            "exact": true,
+            "component": "@/pages/cbd/eq-ratio-box/index.js"
+          },
+          {
+            "path": "/cbd/eslint",
+            "exact": true,
+            "component": "@/pages/cbd/eslint/index.js"
+          },
+          {
+            "path": "/cbd/fetch-wrapper",
+            "exact": true,
+            "component": "@/pages/cbd/fetch-wrapper/index.js"
+          },
+          {
+            "path": "/cbd/fetch",
+            "exact": true,
+            "component": "@/pages/cbd/fetch/index.js"
+          },
+          {
+            "path": "/cbd/functional-card",
+            "exact": true,
+            "component": "@/pages/cbd/functional-card/index.js"
+          },
+          {
+            "path": "/cbd/gesture-password",
+            "exact": true,
+            "component": "@/pages/cbd/gesture-password/index.js"
+          },
+          {
+            "path": "/cbd/grid-wrapper",
+            "exact": true,
+            "component": "@/pages/cbd/grid-wrapper/index.js"
+          },
+          {
+            "path": "/cbd/history-list",
+            "exact": true,
+            "component": "@/pages/cbd/history-list/index.js"
+          },
+          {
+            "path": "/cbd/hooks",
+            "exact": true,
+            "component": "@/pages/cbd/hooks/index.js"
+          },
+          {
+            "path": "/cbd/icon",
+            "exact": true,
+            "component": "@/pages/cbd/icon/index.js"
+          },
+          {
+            "path": "/cbd/image-load",
+            "exact": true,
+            "component": "@/pages/cbd/image-load/index.js"
+          },
+          {
+            "path": "/cbd/image-overflow",
+            "exact": true,
+            "component": "@/pages/cbd/image-overflow/index.js"
+          },
+          {
+            "path": "/cbd/imagetooltips",
+            "exact": true,
+            "component": "@/pages/cbd/imagetooltips/index.js"
+          },
+          {
+            "path": "/cbd/imageviewer",
+            "exact": true,
+            "component": "@/pages/cbd/imageviewer/index.js"
+          },
+          {
+            "path": "/cbd/img-flow",
+            "exact": true,
+            "component": "@/pages/cbd/img-flow/index.js"
+          },
+          {
+            "path": "/cbd/init",
+            "exact": true,
+            "component": "@/pages/cbd/init/index.js"
+          },
+          {
+            "path": "/cbd/json-format",
+            "exact": true,
+            "component": "@/pages/cbd/json-format/index.js"
+          },
+          {
+            "path": "/cbd/layout-container",
+            "exact": true,
+            "component": "@/pages/cbd/layout-container/index.js"
+          },
+          {
+            "path": "/cbd/light-info-card",
+            "exact": true,
+            "component": "@/pages/cbd/light-info-card/index.js"
+          },
+          {
+            "path": "/cbd/loading-mask",
+            "exact": true,
+            "component": "@/pages/cbd/loading-mask/index.js"
+          },
+          {
+            "path": "/cbd/lr-panel",
+            "exact": true,
+            "component": "@/pages/cbd/lr-panel/index.js"
+          },
+          {
+            "path": "/cbd/mini-popover",
+            "exact": true,
+            "component": "@/pages/cbd/mini-popover/index.js"
+          },
+          {
+            "path": "/cbd/mobile-tab",
+            "exact": true,
+            "component": "@/pages/cbd/mobile-tab/index.js"
+          },
+          {
+            "path": "/cbd/modal-holder",
+            "exact": true,
+            "component": "@/pages/cbd/modal-holder/index.js"
+          },
+          {
+            "path": "/cbd/news-statistic",
+            "exact": true,
+            "component": "@/pages/cbd/news-statistic/index.js"
+          },
+          {
+            "path": "/cbd/next",
+            "exact": true,
+            "component": "@/pages/cbd/next/index.js"
+          },
+          {
+            "path": "/cbd/player",
+            "exact": true,
+            "component": "@/pages/cbd/player/index.js"
+          },
+          {
+            "path": "/cbd/progress",
+            "exact": true,
+            "component": "@/pages/cbd/progress/index.js"
+          },
+          {
+            "path": "/cbd/push-card",
+            "exact": true,
+            "component": "@/pages/cbd/push-card/index.js"
+          },
+          {
+            "path": "/cbd/radio-group",
+            "exact": true,
+            "component": "@/pages/cbd/radio-group/index.js"
+          },
+          {
+            "path": "/cbd/react-imap",
+            "exact": true,
+            "component": "@/pages/cbd/react-imap/index.js"
+          },
+          {
+            "path": "/cbd/retract",
+            "exact": true,
+            "component": "@/pages/cbd/retract/index.js"
+          },
+          {
+            "path": "/cbd/ribbon-color",
+            "exact": true,
+            "component": "@/pages/cbd/ribbon-color/index.js"
+          },
+          {
+            "path": "/cbd/rolling-text",
+            "exact": true,
+            "component": "@/pages/cbd/rolling-text/index.js"
+          },
+          {
+            "path": "/cbd/scale-bar",
+            "exact": true,
+            "component": "@/pages/cbd/scale-bar/index.js"
+          },
+          {
+            "path": "/cbd/scale-layout",
+            "exact": true,
+            "component": "@/pages/cbd/scale-layout/index.js"
+          },
+          {
+            "path": "/cbd/scroller",
+            "exact": true,
+            "component": "@/pages/cbd/scroller/index.js"
+          },
+          {
+            "path": "/cbd/search-input",
+            "exact": true,
+            "component": "@/pages/cbd/search-input/index.js"
+          },
+          {
+            "path": "/cbd/search-select",
+            "exact": true,
+            "component": "@/pages/cbd/search-select/index.js"
+          },
+          {
+            "path": "/cbd/searchbar",
+            "exact": true,
+            "component": "@/pages/cbd/searchbar/index.js"
+          },
+          {
+            "path": "/cbd/select-add",
+            "exact": true,
+            "component": "@/pages/cbd/select-add/index.js"
+          },
+          {
+            "path": "/cbd/select-options",
+            "exact": true,
+            "component": "@/pages/cbd/select-options/index.js"
+          },
+          {
+            "path": "/cbd/step",
+            "exact": true,
+            "component": "@/pages/cbd/step/index.js"
+          },
+          {
+            "path": "/cbd/surround-menu",
+            "exact": true,
+            "component": "@/pages/cbd/surround-menu/index.js"
+          },
+          {
+            "path": "/cbd/swiper",
+            "exact": true,
+            "component": "@/pages/cbd/swiper/index.js"
+          },
+          {
+            "path": "/cbd/swipper",
+            "exact": true,
+            "component": "@/pages/cbd/swipper/index.js"
+          },
+          {
+            "path": "/cbd/table-selector",
+            "exact": true,
+            "component": "@/pages/cbd/table-selector/index.js"
+          },
+          {
+            "path": "/cbd/table-textoverflow-nofixed-noscroll",
+            "exact": true,
+            "component": "@/pages/cbd/table-textoverflow-nofixed-noscroll/index.js"
+          },
+          {
+            "path": "/cbd/tag-group",
+            "exact": true,
+            "component": "@/pages/cbd/tag-group/index.js"
+          },
+          {
+            "path": "/cbd/text-group",
+            "exact": true,
+            "component": "@/pages/cbd/text-group/index.js"
+          },
+          {
+            "path": "/cbd/text-maker",
+            "exact": true,
+            "component": "@/pages/cbd/text-maker/index.js"
+          },
+          {
+            "path": "/cbd/text-overflow",
+            "exact": true,
+            "component": "@/pages/cbd/text-overflow/index.js"
+          },
+          {
+            "path": "/cbd/textoverflow-tooltip-conditional",
+            "exact": true,
+            "component": "@/pages/cbd/textoverflow-tooltip-conditional/index.js"
+          },
+          {
+            "path": "/cbd/theme",
+            "exact": true,
+            "component": "@/pages/cbd/theme/index.js"
+          },
+          {
+            "path": "/cbd/timer",
+            "exact": true,
+            "component": "@/pages/cbd/timer/index.js"
+          },
+          {
+            "path": "/cbd/transfer-tree",
+            "exact": true,
+            "component": "@/pages/cbd/transfer-tree/index.js"
+          },
+          {
+            "path": "/cbd/utils",
+            "exact": true,
+            "component": "@/pages/cbd/utils/index.js"
+          },
+          {
+            "path": "/cbd/watermark",
+            "exact": true,
+            "component": "@/pages/cbd/watermark/index.js"
+          },
+          {
+            "path": "/cbd/weixin",
+            "exact": true,
+            "component": "@/pages/cbd/weixin/index.js"
+          },
+          {
+            "path": "/cbd/wordsdot",
+            "exact": true,
+            "component": "@/pages/cbd/wordsdot/index.js"
+          },
+          {
+            "path": "/cbd/wrapper",
+            "exact": true,
+            "component": "@/pages/cbd/wrapper/index.js"
+          },
+          {
+            "path": "/cbd/zoomable-box",
+            "exact": true,
+            "component": "@/pages/cbd/zoomable-box/index.js"
+          },
+          {
+            "path": "/cbd/:package",
+            "exact": true,
+            "component": "@/pages/cbd/[package]/index.js"
+          }
+        ]
+      },
+      {
+        "path": "/comp",
+        "exact": false,
+        "component": "@/pages/comp/_layout.js",
+        "children": [
+          {
+            "path": "/comp",
+            "exact": true,
+            "component": "@/pages/comp/index.js"
+          },
+          {
+            "path": "/comp/alert",
+            "exact": true,
+            "component": "@/pages/comp/alert/index.js"
+          },
+          {
+            "path": "/comp/badge",
+            "exact": true,
+            "component": "@/pages/comp/badge/index.js"
+          },
+          {
+            "path": "/comp/breadcrumb",
+            "exact": true,
+            "component": "@/pages/comp/breadcrumb/index.js"
+          },
+          {
+            "path": "/comp/button",
+            "exact": true,
+            "component": "@/pages/comp/button/index.js"
+          },
+          {
+            "path": "/comp/card",
+            "exact": true,
+            "component": "@/pages/comp/card/index.js"
+          },
+          {
+            "path": "/comp/checkbox",
+            "exact": true,
+            "component": "@/pages/comp/checkbox/index.js"
+          },
+          {
+            "path": "/comp/collapse",
+            "exact": true,
+            "component": "@/pages/comp/collapse/index.js"
+          },
+          {
+            "path": "/comp/color",
+            "exact": true,
+            "component": "@/pages/comp/color/index.js"
+          },
+          {
+            "path": "/comp/datepicker",
+            "exact": true,
+            "component": "@/pages/comp/datepicker/index.js"
+          },
+          {
+            "path": "/comp/drawer",
+            "exact": true,
+            "component": "@/pages/comp/drawer/index.js"
+          },
+          {
+            "path": "/comp/font",
+            "exact": true,
+            "component": "@/pages/comp/font/index.js"
+          },
+          {
+            "path": "/comp/input",
+            "exact": true,
+            "component": "@/pages/comp/input/index.js"
+          },
+          {
+            "path": "/comp/message",
+            "exact": true,
+            "component": "@/pages/comp/message/index.js"
+          },
+          {
+            "path": "/comp/modal",
+            "exact": true,
+            "component": "@/pages/comp/modal/index.js"
+          },
+          {
+            "path": "/comp/number",
+            "exact": true,
+            "component": "@/pages/comp/number/index.js"
+          },
+          {
+            "path": "/comp/pagination",
+            "exact": true,
+            "component": "@/pages/comp/pagination/index.js"
+          },
+          {
+            "path": "/comp/popover",
+            "exact": true,
+            "component": "@/pages/comp/popover/index.js"
+          },
+          {
+            "path": "/comp/progress",
+            "exact": true,
+            "component": "@/pages/comp/progress/index.js"
+          },
+          {
+            "path": "/comp/radio",
+            "exact": true,
+            "component": "@/pages/comp/radio/index.js"
+          },
+          {
+            "path": "/comp/select",
+            "exact": true,
+            "component": "@/pages/comp/select/index.js"
+          },
+          {
+            "path": "/comp/shadow",
+            "exact": true,
+            "component": "@/pages/comp/shadow/index.js"
+          },
+          {
+            "path": "/comp/spin",
+            "exact": true,
+            "component": "@/pages/comp/spin/index.js"
+          },
+          {
+            "path": "/comp/steps",
+            "exact": true,
+            "component": "@/pages/comp/steps/index.js"
+          },
+          {
+            "path": "/comp/switch",
+            "exact": true,
+            "component": "@/pages/comp/switch/index.js"
+          },
+          {
+            "path": "/comp/table",
+            "exact": true,
+            "component": "@/pages/comp/table/index.js"
+          },
+          {
+            "path": "/comp/tabs",
+            "exact": true,
+            "component": "@/pages/comp/tabs/index.js"
+          },
+          {
+            "path": "/comp/tag",
+            "exact": true,
+            "component": "@/pages/comp/tag/index.js"
+          },
+          {
+            "path": "/comp/timeline",
+            "exact": true,
+            "component": "@/pages/comp/timeline/index.js"
+          },
+          {
+            "path": "/comp/tooltip",
+            "exact": true,
+            "component": "@/pages/comp/tooltip/index.js"
+          },
+          {
+            "path": "/comp/transfer",
+            "exact": true,
+            "component": "@/pages/comp/transfer/index.js"
+          }
+        ]
+      },
+      {
+        "path": "/exam",
+        "exact": true,
+        "component": "@/pages/exam/index.js"
+      },
+      {
+        "path": "/mobile",
+        "exact": false,
+        "component": "@/pages/mobile/_layout.js",
+        "children": [
+          {
+            "path": "/mobile",
+            "exact": true,
+            "component": "@/pages/mobile/index.js"
+          },
+          {
+            "path": "/mobile/draggable-grid",
+            "exact": true,
+            "component": "@/pages/mobile/draggable-grid/index.js"
+          },
+          {
+            "path": "/mobile/draggable-grid/demo/basic",
+            "exact": true,
+            "component": "@/pages/mobile/draggable-grid/demo/basic/index.js"
+          },
+          {
+            "path": "/mobile/draggable-grid/demo/custom-item",
+            "exact": true,
+            "component": "@/pages/mobile/draggable-grid/demo/custom-item/index.js"
+          },
+          {
+            "path": "/mobile/header-layout",
+            "exact": true,
+            "component": "@/pages/mobile/header-layout/index.js"
+          },
+          {
+            "path": "/mobile/rotate-full-screen",
+            "exact": true,
+            "component": "@/pages/mobile/rotate-full-screen/index.js"
+          },
+          {
+            "path": "/mobile/rotate-full-screen/demo/basic",
+            "exact": true,
+            "component": "@/pages/mobile/rotate-full-screen/demo/basic/index.js"
+          },
+          {
+            "path": "/mobile/single-view-tree",
+            "exact": true,
+            "component": "@/pages/mobile/single-view-tree/index.js"
+          },
+          {
+            "path": "/mobile/single-view-tree/demo/basic",
+            "exact": true,
+            "component": "@/pages/mobile/single-view-tree/demo/basic/index.js"
+          },
+          {
+            "path": "/mobile/single-view-tree/demo/multiple-check-group",
+            "exact": true,
+            "component": "@/pages/mobile/single-view-tree/demo/multiple-check-group/index.js"
+          },
+          {
+            "path": "/mobile/single-view-tree/demo/multiple-check",
+            "exact": true,
+            "component": "@/pages/mobile/single-view-tree/demo/multiple-check/index.js"
+          },
+          {
+            "path": "/mobile/single-view-tree/demo/single-check",
+            "exact": true,
+            "component": "@/pages/mobile/single-view-tree/demo/single-check/index.js"
+          }
+        ]
+      },
+      {
+        "path": "/scene",
+        "exact": false,
+        "component": "@/pages/scene/_layout.js",
+        "children": [
+          {
+            "path": "/scene/list/common-list",
+            "exact": true,
+            "component": "@/pages/scene/list/common-list/index.js"
+          },
+          {
+            "path": "/scene/overview/auto-layout-demo",
+            "exact": true,
+            "component": "@/pages/scene/overview/auto-layout-demo/index.js"
+          },
+          {
+            "path": "/scene/overview/auto-layout",
+            "exact": true,
+            "component": "@/pages/scene/overview/auto-layout/index.js"
+          },
+          {
+            "path": "/scene/overview/right-fix-layout-demo",
+            "exact": true,
+            "component": "@/pages/scene/overview/right-fix-layout-demo/index.js"
+          },
+          {
+            "path": "/scene/overview/right-fix-layout",
+            "exact": true,
+            "component": "@/pages/scene/overview/right-fix-layout/index.js"
+          },
+          {
+            "path": "/scene",
+            "exact": true,
+            "component": "@/pages/scene/index.js"
+          }
+        ]
+      }
+    ]
+  }
+]
+[Success] Routes updated.
