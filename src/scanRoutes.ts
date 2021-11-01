@@ -27,19 +27,21 @@ function sortDynamicRoutes(arr: RouteConfig[] | undefined): RouteConfig[] {
   if (!arr) {
     return [];
   }
-  return arr.map((r) => {
-    if (Array.isArray(r.children) && r.children.length > 0) {
-      return {
-        ...r,
-        children: sortDynamicRoutes(r.children)
+  return arr
+    .map((r) => {
+      if (Array.isArray(r.children) && r.children.length > 0) {
+        return {
+          ...r,
+          children: sortDynamicRoutes(r.children),
+        };
       }
-    }
-    return r;
-  }).sort((a, b) => {
-    const dynA = a.path?.indexOf(':') ?? -1;
-    const dynB = b.path?.indexOf(':') ?? -1;
-    return dynA - dynB;
-  });
+      return r;
+    })
+    .sort((a, b) => {
+      const dynA = a.path?.indexOf(':') ?? -1;
+      const dynB = b.path?.indexOf(':') ?? -1;
+      return dynA - dynB;
+    });
 }
 
 function sort404(arr: RouteConfig[]) {
@@ -78,18 +80,21 @@ export default function (config: Config) {
   }
   const scanFn = DEV_MODE ? watchRoutes : scanRoutes;
 
-  const relativeToPageRoot = slash(relative(typeof config.output === 'string' ? config.output : defaultOutputPath, config.pageRoot ?? defaultPageRoot));
+  const relativeToPageRoot = slash(
+    relative(
+      join(typeof config.output === 'string' ? config.output : defaultOutputPath, '..'),
+      config.pageRoot ?? defaultPageRoot,
+    ),
+  );
 
   const options: IConfig = {
     pageRoot: defaultPageRoot,
     filter: (obj) => {
-      if (/[A-Z]/.test(obj.path))
-        return false;
-      if (obj.path.includes('/.entry/'))
-        return false;
+      if (/[A-Z]/.test(obj.path)) return false;
+      if (obj.path.includes('/.entry/')) return false;
       return obj.name === 'index' || obj.name === '_layout' || obj.name === '404';
     },
-    componentPath: obj => {
+    componentPath: (obj) => {
       return `script$require('${relativeToPageRoot}/${obj.path}').default$`;
     },
     excludes: [/[\\/](components|models|services|layouts)[\\/]/],
