@@ -1,12 +1,22 @@
-import { resolve, join, dirname } from 'path';
+import { resolve, join, dirname, relative } from 'path';
 import fs from 'fs';
 import watchRoutes, { scanRoutes } from 'routes-watcher';
 import { IConfig } from 'routes-watcher';
 import { RouteConfig } from 'routes-watcher/lib/defs';
 
 const DEV_MODE = process.env.NODE_ENV === 'development';
-const pageRoot = join(process.cwd(), 'src/pages');
+const defaultPageRoot = join(process.cwd(), 'src/pages');
 const defaultOutputPath: string = join(process.cwd(), 'src/pages/.entry/index.js');
+
+function slash(input: string) {
+  const isExtendedLengthPath = /^\\\\\?\\/.test(input);
+
+  if (isExtendedLengthPath) {
+    return input;
+  }
+
+  return input.replace(/\\/g, '/');
+}
 
 export interface Config extends IConfig {
   /** output path */
@@ -68,12 +78,19 @@ export default function (config: Config) {
   }
   const scanFn = DEV_MODE ? watchRoutes : scanRoutes;
 
-  scanFn({
-    pageRoot,
+  const relativeToPageRoot = slash(relative(typeof config.output === 'string' ? config.output : defaultOutputPath, config.pageRoot ?? defaultPageRoot));
+
+  const options: IConfig = {
+    pageRoot: defaultPageRoot,
     filter: (obj) => {
-      if (/[A-Z]/.test(obj.path)) return false;
-      if (obj.path.includes('/.entry/')) return false;
+      if (/[A-Z]/.test(obj.path))
+        return false;
+      if (obj.path.includes('/.entry/'))
+        return false;
       return obj.name === 'index' || obj.name === '_layout' || obj.name === '404';
+    },
+    componentPath: obj => {
+      return `script$require('${relativeToPageRoot}/${obj.path}').default$`;
     },
     excludes: [/[\\/](components|models|services|layouts)[\\/]/],
     templateFile: resolve(__dirname, '../RouteConfig.js.template'),
@@ -95,5 +112,6 @@ export default function (config: Config) {
       const newRoutes = sortDynamicRoutes(sort404(routes));
       return typeof config?.modifyRoutes === 'function' ? config.modifyRoutes(newRoutes) : newRoutes;
     },
-  });
+  };
+  scanFn(options);
 }
