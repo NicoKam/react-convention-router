@@ -23,11 +23,7 @@
     "sourceMap": true,
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "ESNext",
-    "types": [
-      "node",
-      "jest"
-    ]
+    "target": "ESNext"
   },
   "include": [
     "src/**/*"

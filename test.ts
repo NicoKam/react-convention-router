@@ -1,7 +1,7 @@
 import scanRoutes from './src';
 
 scanRoutes({
-  pageRoot: 'D:/project/aliyun-gts-whale-front/src/pages',
+  pageRoot: 'D:/project/demo-proj/src/pages',
   output: (routes) => {
     console.log(routes);
   },
